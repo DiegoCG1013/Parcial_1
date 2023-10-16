@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class CampanaGauss {
 
@@ -25,6 +22,10 @@ public class CampanaGauss {
             //No se como hacer esto
         }
 
+
+    }
+
+    private  Callable<Integer>(){
 
     }
 
