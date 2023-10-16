@@ -17,9 +17,12 @@ public class FabricaCampanas {
         }
     }
 
-    public FabricaCampanas() {
-        cadenaEnsamblaje.setComponentesFabricados(componentesFabricados);
+    public FabricaCampanas() {}
+
+    public CampanaGauss ensamblarCampana() {
+        return cadenaEnsamblaje.setComponentesFabricados(componentesFabricados);
     }
+
     public void empezarProduccion() {
 
         for (int i = 0; i < estacionesTrabajo.length; i++) {
