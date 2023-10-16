@@ -17,16 +17,22 @@ public class CampanaGauss {
 
     public void lanzarBolitas() {
         int numeroHilos = 5;
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(numeroHilos);
+        Future<Integer[]>[] resultados = new Future[numeroHilos];
+        ExecutorService executor = Executors.newCachedThreadPool();
         for (int i = 0; i < numeroHilos; i++) {
-            //No se como hacer esto
+            Future<Integer[]> future = executor.submit(new GeneradorBolitas(30));
         }
-
-
-    }
-
-    private  Callable<Integer>(){
-
+        for (int i = 0; i < numeroHilos; i++) {
+            try {
+                Integer[] resultado = resultados[i].get();
+                executor.shutdown();
+                for (int j = 0; j < resultado.length; j++) {
+                    colocarEnColumna(resultado[j]);
+                }
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 

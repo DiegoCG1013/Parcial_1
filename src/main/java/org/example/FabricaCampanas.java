@@ -23,12 +23,13 @@ public class FabricaCampanas {
 
     public FabricaCampanas() {}
 
-    public void ensamblarCampana() {
+    public CampanaGauss ensamblarCampana() {
         try {
-            campanaGauss = cadenaEnsamblaje.setComponentesFabricados(componentesFabricados);
+            return cadenaEnsamblaje.setComponentesFabricados(componentesFabricados);
         } catch (Exception e) {
             System.out.println("Componentes insuficientes");
         }
+        return null;
     }
 
     public void producirComponentes() {
