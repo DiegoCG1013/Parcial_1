@@ -1,27 +1,18 @@
 package org.example;
 
-public class EstacionTrabajo implements Runnable {
+import java.util.concurrent.Callable;
+
+public class EstacionTrabajo implements Callable<Componente> {
 
     @Override
-    public void run() {
-        while (true) {
-            try {
-                Componente comp = producirComponente();
-                colocarComponente(comp);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    private void colocarComponente(Componente componente) {
-        FabricaCampanas.colocarComponente(componente);
+    public Componente call() throws Exception{
+        Componente comp = producirComponente();
+        return comp;
     }
 
     private Componente producirComponente() throws InterruptedException{
         Componente componente = new Componente();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         return componente;
     }
 }
