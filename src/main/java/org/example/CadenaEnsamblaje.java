@@ -6,13 +6,9 @@ public class CadenaEnsamblaje {
     private ArrayList<Componente> componentesFabricados = new ArrayList<>();
 
 
-    public CampanaGauss setComponentesFabricados(ArrayList<Componente> componentesFabricados) {
+    public CampanaGauss setComponentesFabricados(ArrayList<Componente> componentesFabricados) throws Exception{
         this.componentesFabricados = componentesFabricados;
-        try{
-            return ensamblarCampana();
-        } catch (Exception e){
-            System.out.println("Faltan componentes");
-        }
+        return ensamblarCampana();
     }
 
     private CampanaGauss ensamblarCampana() throws Exception{

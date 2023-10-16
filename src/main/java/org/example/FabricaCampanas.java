@@ -9,7 +9,11 @@ public class FabricaCampanas {
     private ArrayList<Componente> componentesFabricados = new ArrayList<>();
     private EstacionTrabajo[] estacionesTrabajo = new EstacionTrabajo[5];
     private CadenaEnsamblaje cadenaEnsamblaje = new CadenaEnsamblaje();
+    private CampanaGauss campanaGauss;
 
+    public CampanaGauss getCampanaGauss() {
+        return campanaGauss;
+    }
 
     public void colocarComponente(Componente componente) {
         synchronized (this){
@@ -19,11 +23,15 @@ public class FabricaCampanas {
 
     public FabricaCampanas() {}
 
-    public CampanaGauss ensamblarCampana() {
-        return cadenaEnsamblaje.setComponentesFabricados(componentesFabricados);
+    public void ensamblarCampana() {
+        try {
+            campanaGauss = cadenaEnsamblaje.setComponentesFabricados(componentesFabricados);
+        } catch (Exception e) {
+            System.out.println("Componentes insuficientes");
+        }
     }
 
-    public void empezarProduccion() {
+    public void producirComponentes() {
 
         for (int i = 0; i < estacionesTrabajo.length; i++) {
             estacionesTrabajo[i] = new EstacionTrabajo();
@@ -43,8 +51,5 @@ public class FabricaCampanas {
             }
         }
         executor.shutdown();
-
-        //Ahora los 5 componentes estan febricados
-        //Ahora se ensamblan
     }
 }
