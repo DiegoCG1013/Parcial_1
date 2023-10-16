@@ -1,8 +1,13 @@
 package org.example;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class CampanaGauss {
 
-    int tamanyoContenedor = 10;
+    int tamanyoContenedor = 20;
     Boolean[][] contenedor = new Boolean[tamanyoContenedor][tamanyoContenedor];
 
     public CampanaGauss() {
@@ -12,6 +17,32 @@ public class CampanaGauss {
             }
         }
     }
+
+    public void lanzarBolitas() {
+        int numeroHilos = 5;
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(numeroHilos);
+        for (int i = 0; i < numeroHilos; i++) {
+            //No se como hacer esto
+        }
+
+
+    }
+
+
+    private void colocarEnColumna(int columna) {
+        int fila = tamanyoContenedor;
+        // Buscamos la primera fila vacía desde abajo
+        while (fila > 0 && contenedor[fila - 1][columna]) {
+            fila--;
+        }
+        if (fila > 0) {
+            contenedor[fila - 1][columna] = true;
+        }
+    }
+
+
+
+
 
     @Override
     public String toString() {
